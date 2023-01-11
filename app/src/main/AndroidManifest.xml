@@ -24,6 +24,10 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+
+            <meta-data
+                android:name="com.google.mlkit.vision.DEPENDENCIES"
+                android:value="ocr" />
         </activity>
     </application>
 
