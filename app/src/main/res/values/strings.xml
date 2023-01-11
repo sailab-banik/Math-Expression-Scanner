@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MathExpressionScanner</string>
+    <string name="app_name">Math Expression Scanner</string>
+    <string name="capture_btn">CAPTURE</string>
+    <string name="evaluate_btn">EVALUATE</string>
 </resources>
