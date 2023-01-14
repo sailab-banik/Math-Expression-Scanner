@@ -1,15 +1,19 @@
 package com.sailab.mathexpressionscanner;
 
 import static android.Manifest.permission_group.CAMERA;
+import static android.Manifest.permission_group.STORAGE;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,6 +24,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,13 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView expImg;
     private TextView expressionTxt, resultTxt;
-    private Button capture_btn, evaluate_btn;
+    private ImageButton capture_btn, mediaBtn, calculatorBtn;
     private Bitmap imageBitmap;
-    private Uri imageUri;
+    int CAM_PERMISSION_CODE = 200;
+    int STORAGE_PERMISSION_CODE = 80;
 
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    final int PIC_CROP = 2;
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,38 +63,57 @@ public class MainActivity extends AppCompatActivity {
         expressionTxt = findViewById(R.id.expressionTxt);
         resultTxt = findViewById(R.id.resultTxt);
         capture_btn = findViewById(R.id.captureBtn);
-        evaluate_btn = findViewById(R.id.evaluateBtn);
+        mediaBtn = findViewById(R.id.mediaBtn);
+        calculatorBtn = findViewById(R.id.calculatorBtn);
 
         capture_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(CheckPermission()){
+                if(checkCamPermission()){
                     CaptureImage();
                 } else {
-                    RequestPermission();
+                    reqCamPermission();
                 }
             }
         });
 
-        evaluate_btn.setOnClickListener(new View.OnClickListener() {
+        mediaBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DetectText();
+                if(checkGalleryPermission()) {
+                    selectGalleryImage();
+                } else {
+                    reqGalleryPermission();
+                }
+            }
+        });
+
+        calculatorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent calculator = new Intent(getApplicationContext(), CalculatorActivity.class);
+                startActivity(calculator);
             }
         });
 
     }
 
-    private boolean CheckPermission() {
-        int cameraPermission = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
+    private boolean checkCamPermission() {
+        int cameraPermission = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA);
         return cameraPermission == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void RequestPermission() {
-        int PERMISSION_CODE = 200;
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.CAMERA
-        }, PERMISSION_CODE);
+    private boolean checkGalleryPermission() {
+        int galleryPermission = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        return galleryPermission == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void reqCamPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAM_PERMISSION_CODE);
+    }
+
+    private void reqGalleryPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
     }
 
     private void CaptureImage() {
@@ -102,18 +125,39 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
+    private void selectGalleryImage() {
+        ImagePicker.with(this)
+                .galleryOnly()
+                .crop(16f, 6f)
+                .compress(1024)
+                .maxResultSize(480, 480)
+                .start();
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if(grantResults.length>0){
-            boolean cameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-            if(cameraPermission){
-                Toast.makeText(this, "Permission Granted ", Toast.LENGTH_SHORT).show();
-                CaptureImage();
-            }else {
-                Toast.makeText(getApplicationContext(), "Permission denied !", Toast.LENGTH_SHORT).show();
+        if(requestCode == CAM_PERMISSION_CODE) {
+            if (grantResults.length > 0) {
+                boolean cameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (cameraPermission) {
+                    CaptureImage();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Permission denied !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        if(requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0) {
+                boolean galleryPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (galleryPermission) {
+                    selectGalleryImage();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Permission denied !", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -129,12 +173,9 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             expImg.setImageBitmap(imageBitmap);
-
+            DetectText();
         }
     }
-
-
-
 
     private void DetectText() {
 
@@ -169,16 +210,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 String detectTxt = String.valueOf(result);
 
-
-                detectTxt.replace('t', '7');
-
-
-                expressionTxt.setText(detectTxt);
+                detectTxt = detectTxt.replaceAll("x", "*");
+                detectTxt = detectTxt.replaceAll("÷", "/");
 
                 Expression exp = new Expression(detectTxt);
                 String resultExp = String.valueOf(exp.calculate());
 
-                resultTxt.setText(resultExp);
+                if(!resultExp.equals("NaN")) {
+                    expressionTxt.setText(detectTxt);
+                    resultTxt.setText(resultExp);
+                } else {
+                    showAlertBox();
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -186,5 +229,27 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Failed to Detect Expression", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showAlertBox() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder
+                .setTitle("Math Recognition Problem")
+                .setMessage("Couldn't able to recognize math expression." +"\n"+"\n" +
+                        "Do you want to try again?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        CaptureImage();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                .create()
+                .show();
     }
 }
