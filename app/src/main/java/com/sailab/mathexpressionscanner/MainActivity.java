@@ -220,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
                     expressionTxt.setText(detectTxt);
                     resultTxt.setText(resultExp);
                 } else {
+                    expressionTxt.setText("");
+                    resultTxt.setText("");
                     showAlertBox();
                 }
             }
