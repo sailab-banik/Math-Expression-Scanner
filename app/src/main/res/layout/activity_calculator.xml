@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".CalculatorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0"
+            android:autofillHints="false"
+            android:background="@null"
+            android:inputType="text"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            tools:ignore="LabelFor,SpUsage">
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="32dp"
+            android:layout_weight="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="26dp"
+            tools:ignore="SpUsage" />
+
+        <ImageButton
+            android:id="@+id/backspace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginBottom="22dp"
+            android:layout_weight="0"
+            android:background="#00000000"
+            android:contentDescription="@android:string/defaultMsisdnAlphaTag"
+            android:onClick="backspaceBTN"
+            android:padding="10dp"
+            android:src="@drawable/ic_baseline_backspace_24"
+            tools:ignore="RtlHardcoded,TouchTargetSizeCheck, UsingOnClickInXml" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.2"
+            android:background="#bdbebd" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/clearBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="clearBTN"
+                    android:padding="12dp"
+                    android:text="@string/clear"
+                    android:textColor="#ff0800"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bracketBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="bracketBTN"
+                    android:padding="12dp"
+                    android:text="@string/bracket"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/percentageBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="percentageBTN"
+                    android:padding="12dp"
+                    android:text="@string/percentage"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/divideBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="divideBTN"
+                    android:padding="12dp"
+                    android:text="@string/divide"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sevenBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="sevenBTN"
+                    android:padding="12dp"
+                    android:text="@string/seven"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/eightBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="eightBTN"
+                    android:padding="12dp"
+                    android:text="@string/eight"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/nineBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="nineBTN"
+                    android:padding="12dp"
+                    android:text="@string/nine"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/multiBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="multiBTN"
+                    android:padding="12dp"
+                    android:text="@string/multi"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXML" />
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/fourBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="fourBTN"
+                    android:padding="12dp"
+                    android:text="@string/four"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/fiveBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="fiveBTN"
+                    android:padding="12dp"
+                    android:text="@string/five"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sixBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="sixBTN"
+                    android:padding="12dp"
+                    android:text="@string/six"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/minusBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="minusBTN"
+                    android:padding="12dp"
+                    android:text="@string/minus"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/oneBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="oneBTN"
+                    android:padding="12dp"
+                    android:text="@string/one"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/twoBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="twoBTN"
+                    android:padding="12dp"
+                    android:text="@string/two"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/threeBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="threeBTN"
+                    android:padding="12dp"
+                    android:text="@string/three"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plusBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="plusBTN"
+                    android:padding="12dp"
+                    android:text="@string/plus"
+                    android:textColor="#689F38"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
+            </TableRow>
+
+            <TableRow>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/plusMinusBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="plusMinusBTN"
+                    android:padding="12dp"
+                    android:text="@string/plusMinus"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/zeroBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="zeroBTN"
+                    android:padding="12dp"
+                    android:text="@string/zero"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dotBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="dotBTN"
+                    android:padding="12dp"
+                    android:text="@string/dot"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/equalBTN"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="equalBTN"
+                    android:padding="12dp"
+                    android:text="@string/equal"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
