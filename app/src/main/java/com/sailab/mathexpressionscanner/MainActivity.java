@@ -9,11 +9,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -33,14 +36,19 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import org.mariuszgromada.math.mxparser.Expression;
 
+import java.io.IOException;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageView expImg;
     private TextView expressionTxt, resultTxt;
     private Button capture_btn, evaluate_btn;
     private Bitmap imageBitmap;
+    private Uri imageUri;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    final int PIC_CROP = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(CheckPermission()){
                     CaptureImage();
-
                 } else {
                     RequestPermission();
                 }
@@ -69,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DetectText();
-
             }
         });
 
@@ -88,13 +94,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CaptureImage() {
-        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (getApplicationContext().getPackageManager().hasSystemFeature(
-                PackageManager.FEATURE_CAMERA_ANY)) {
-            // this device has a camera
-            startActivityForResult(takePicture, REQUEST_IMAGE_CAPTURE);
-        }
+        ImagePicker.with(this)
+                .cameraOnly()
+                .crop(16f, 6f)
+                .compress(1024)
+                .maxResultSize(480, 480)
+                .start();
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -111,17 +118,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
-            Bundle extras = data.getExtras();
-            imageBitmap = (Bitmap) extras.get("data");
+        if (resultCode == RESULT_OK) {
+            Uri resultUri = data.getData();
+            try {
+                imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), resultUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             expImg.setImageBitmap(imageBitmap);
+
         }
     }
+
+
+
 
     private void DetectText() {
 
@@ -146,16 +159,23 @@ public class MainActivity extends AppCompatActivity {
                         Rect lineRect = line.getBoundingBox();
 
                         for (Text.Element element : line.getElements()) {
+                            result.append(" ");
                             String elementText = element.getText();
-                            result.append(elementText);
+                            Point[] elementPoint = element.getCornerPoints();
+                            Rect elementRect = element.getBoundingBox();
+                            result.append(elementText.toLowerCase(Locale.ROOT));
                         }
                     }
                 }
-                expressionTxt.setText(result);
+                String detectTxt = String.valueOf(result);
 
-                String userExp = expressionTxt.getText().toString();
 
-                Expression exp = new Expression(userExp);
+                detectTxt.replace('t', '7');
+
+
+                expressionTxt.setText(detectTxt);
+
+                Expression exp = new Expression(detectTxt);
                 String resultExp = String.valueOf(exp.calculate());
 
                 resultTxt.setText(resultExp);

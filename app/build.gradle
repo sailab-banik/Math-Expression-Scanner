@@ -38,8 +38,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // Firebase Image to Text Recognition
+    implementation 'com.google.firebase:firebase-core:21.1.1'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.2'
 
     // MxParser
     implementation 'org.mariuszgromada.math:MathParser.org-mXparser:5.1.0'
+
+    // ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 }
