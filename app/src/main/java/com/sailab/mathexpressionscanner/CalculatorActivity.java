@@ -1,10 +1,15 @@
 package com.sailab.mathexpressionscanner;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.ActivityInfo;
+import android.content.pm.ConfigurationInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.mariuszgromada.math.mxparser.Expression;
@@ -13,6 +18,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private EditText et;
     private TextView tv;
+    private ImageButton rotateBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +30,21 @@ public class CalculatorActivity extends AppCompatActivity {
         et.setShowSoftInputOnFocus(false);
 
         tv = findViewById(R.id.output);
+
+        rotateBtn = findViewById(R.id.rotateScreenBtn);
+        int orientation = CalculatorActivity.this.getResources().getConfiguration().orientation;
+        rotateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                } else{
+                    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+                }
+            }
+        });
     }
+
 
     private void updateText(String strToAdd) {
         String oldStr = et.getText().toString();

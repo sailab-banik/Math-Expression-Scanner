@@ -12,15 +12,15 @@
         android:id="@+id/input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
         android:autofillHints="false"
         android:background="@null"
         android:inputType="text"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,13 +32,14 @@
         android:id="@+id/output"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="4dp"
         android:layout_weight="0"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
-        android:textSize="26sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input" />
@@ -47,8 +48,10 @@
         android:id="@+id/calculatorConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="360dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +60,13 @@
 
         <ImageButton
             android:id="@+id/backspace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="21dp"
-            android:background="@color/black"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="2dp"
             android:onClick="backspaceBTN"
-            android:padding="10dp"
+            android:background="@color/black"
+            android:padding="3dp"
             android:src="@drawable/ic_baseline_backspace_24"
             app:layout_constraintBottom_toTopOf="@+id/hr"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,14 +77,13 @@
             android:id="@+id/hr"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="2dp"
             android:alpha="0.2"
             android:background="#bdbebd"
-            app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backspace" />
+            app:layout_constraintTop_toBottomOf="@id/backspace"
+            app:layout_constraintBottom_toBottomOf="@+id/tableLayout2"/>
 
         <TableLayout
             android:id="@+id/tableLayout2"
@@ -98,15 +101,14 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
                     android:onClick="clearBTN"
-                    android:padding="12dp"
                     android:text="@string/clear"
                     android:textColor="#ff0800"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -114,7 +116,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -122,7 +124,7 @@
                     android:padding="12dp"
                     android:text="@string/bracket"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -130,7 +132,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -138,7 +140,7 @@
                     android:padding="12dp"
                     android:text="@string/percentage"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -146,7 +148,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -154,7 +156,7 @@
                     android:padding="12dp"
                     android:text="@string/divide"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
             </TableRow>
 
@@ -165,7 +167,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -173,7 +175,7 @@
                     android:padding="12dp"
                     android:text="@string/seven"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -181,7 +183,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -189,7 +191,7 @@
                     android:padding="12dp"
                     android:text="@string/eight"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -197,7 +199,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -205,7 +207,7 @@
                     android:padding="12dp"
                     android:text="@string/nine"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -213,7 +215,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -221,7 +223,7 @@
                     android:padding="12dp"
                     android:text="@string/multi"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXML" />
             </TableRow>
 
@@ -232,7 +234,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -240,7 +242,7 @@
                     android:padding="12dp"
                     android:text="@string/four"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -248,7 +250,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -256,7 +258,7 @@
                     android:padding="12dp"
                     android:text="@string/five"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -264,7 +266,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -272,7 +274,7 @@
                     android:padding="12dp"
                     android:text="@string/six"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -280,7 +282,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -288,7 +290,7 @@
                     android:padding="12dp"
                     android:text="@string/minus"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
             </TableRow>
 
@@ -299,7 +301,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -307,7 +309,7 @@
                     android:padding="12dp"
                     android:text="@string/one"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -315,7 +317,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -323,7 +325,7 @@
                     android:padding="12dp"
                     android:text="@string/two"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -331,7 +333,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -339,7 +341,7 @@
                     android:padding="12dp"
                     android:text="@string/three"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -347,7 +349,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -355,7 +357,7 @@
                     android:padding="12dp"
                     android:text="@string/plus"
                     android:textColor="#689F38"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,TextContrastCheck,UsingOnClickInXml" />
             </TableRow>
 
@@ -366,7 +368,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -374,7 +376,7 @@
                     android:padding="12dp"
                     android:text="@string/plusMinus"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -382,7 +384,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -390,7 +392,7 @@
                     android:padding="12dp"
                     android:text="@string/zero"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -398,7 +400,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/circle"
                     android:fontFamily="sans-serif-light"
@@ -406,7 +408,7 @@
                     android:padding="12dp"
                     android:text="@string/dot"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -414,7 +416,7 @@
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/green_circle"
                     android:fontFamily="sans-serif-light"
@@ -422,21 +424,18 @@
                     android:padding="12dp"
                     android:text="@string/equal"
                     android:textColor="@color/white"
-                    android:textSize="32dp"
+                    android:textSize="16dp"
                     tools:ignore="SpUsage,UsingOnClickInXml" />
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ImageButton
         android:id="@+id/rotateScreenBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/ic_baseline_screen_rotation_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculatorConstraint"/>
-
-
-
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
