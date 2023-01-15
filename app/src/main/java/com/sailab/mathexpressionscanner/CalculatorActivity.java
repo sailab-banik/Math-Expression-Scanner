@@ -222,4 +222,108 @@ public class CalculatorActivity extends AppCompatActivity {
         et.setText(calculation());
         et.setSelection(et.getText().toString().length());
     }
+
+    public void sinBTN(View view) {
+        updateText("sin(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void cosBTN(View view) {
+        updateText("cos(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void tanBTN(View view) {
+        updateText("tan(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void arcSinBTN(View view) {
+        updateText("arcsin(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 6);
+        tv.setText(calculation());
+    }
+
+    public void cosArcBTN(View view) {
+        updateText("arccos(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 6);
+        tv.setText(calculation());
+    }
+
+    public void tanArcBTN(View view) {
+        updateText("arctan(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 6);
+        tv.setText(calculation());
+    }
+
+    public void sqBTN(View view) {
+        updateText("^(2)");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void powBTN(View view) {
+        updateText("^(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 1);
+        tv.setText(calculation());
+    }
+
+    public void rootBTN(View view) {
+        updateText("sqrt(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void logBTN(View view) {
+        updateText("log(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 2);
+        tv.setText(calculation());
+    }
+
+    public void lnBTN(View view) {
+        updateText("ln(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 1);
+        tv.setText(calculation());
+    }
+
+    public void eBTN(View view) {
+        updateText("e");
+        tv.setText(calculation());
+    }
+
+    public void primeBTN(View view) {
+        updateText("ispr(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
+
+    public void piBTN(View view) {
+        updateText("pi");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 1);
+        tv.setText(calculation());
+    }
+
+    public void modBTN(View view) {
+
+        updateText("abs(");
+        int cursorPos = et.getSelectionStart();
+        et.setSelection(cursorPos + 3);
+        tv.setText(calculation());
+    }
 }

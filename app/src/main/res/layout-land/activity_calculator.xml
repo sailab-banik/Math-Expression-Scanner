@@ -429,6 +429,297 @@
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/calculatorConstraint"
+        app:layout_constraintTop_toBottomOf="@+id/output">
+
+        <View
+            android:id="@+id/hr2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginBottom="2dp"
+            android:alpha="0.2"
+            android:background="#bdbebd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayoutSci"/>
+
+        <TableLayout
+            android:id="@+id/tableLayoutSci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hr2">
+
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sinBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="sinBTN"
+                    android:text="@string/trigSinText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cosBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="cosBTN"
+                    android:text="@string/trigCosText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tanBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="tanBTN"
+                    android:text="@string/trigTanText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+            </TableRow>
+
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/arcSinBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="arcSinBTN"
+                    android:text="@string/trigArcSinText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cosArcBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="cosArcBTN"
+                    android:text="@string/trigArcCosText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/tanArcBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="tanArcBTN"
+                    android:text="@string/trigArcTanText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+            </TableRow>
+
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/sqBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="sqBTN"
+                    android:text="@string/xSquaredText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/powBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="powBTN"
+                    android:text="@string/xPowerYText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/rootBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="rootBTN"
+                    android:text="@string/squareRootText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+            </TableRow>
+
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/logBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="logBTN"
+                    android:text="@string/LogText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/lnBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="lnBTN"
+                    android:text="@string/naturalLogText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/eBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="eBTN"
+                    android:text="@string/eText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+            </TableRow>
+
+            <TableRow>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/primeBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="primeBTN"
+                    android:text="@string/isPrimeFunctionText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/piBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="piBTN"
+                    android:text="@string/piText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/modBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:background="@drawable/circle"
+                    android:fontFamily="sans-serif-light"
+                    android:onClick="modBTN"
+                    android:text="@string/absoluteValueText"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    tools:ignore="SpUsage,UsingOnClickInXml"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ImageButton
         android:id="@+id/rotateScreenBtn"
         android:layout_width="wrap_content"
