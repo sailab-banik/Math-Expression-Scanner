@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     int CAM_PERMISSION_CODE = 200;
     int STORAGE_PERMISSION_CODE = 80;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,16 +210,15 @@ public class MainActivity extends AppCompatActivity {
                 String detectTxt = String.valueOf(result);
 
                 detectTxt = detectTxt.replaceAll("x", "*");
-                detectTxt = detectTxt.replaceAll("÷", "/");
 
                 Expression exp = new Expression(detectTxt);
                 String resultExp = String.valueOf(exp.calculate());
 
-                expressionTxt.setText(detectTxt);
-
                 if(!resultExp.equals("NaN")) {
+                    expressionTxt.setText(detectTxt);
                     resultTxt.setText(resultExp);
                 } else {
+                    expressionTxt.setText("");
                     resultTxt.setText("");
                     showAlertBox();
                 }
