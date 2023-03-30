@@ -216,11 +216,11 @@ public class MainActivity extends AppCompatActivity {
                 Expression exp = new Expression(detectTxt);
                 String resultExp = String.valueOf(exp.calculate());
 
+                expressionTxt.setText(detectTxt);
+
                 if(!resultExp.equals("NaN")) {
-                    expressionTxt.setText(detectTxt);
                     resultTxt.setText(resultExp);
                 } else {
-                    expressionTxt.setText("");
                     resultTxt.setText("");
                     showAlertBox();
                 }
@@ -242,11 +242,15 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ImagePicker.with(MainActivity.this)
-                                .crop(16f, 6f)
-                                .compress(1024)
-                                .maxResultSize(480, 480)
-                                .start();
+                        if(checkCamPermission()) {
+                            if(checkGalleryPermission()) {
+                                ImagePicker.with(MainActivity.this)
+                                        .crop(16f, 6f)
+                                        .compress(1024)
+                                        .maxResultSize(480, 480)
+                                        .start();
+                            } else reqGalleryPermission();
+                        } else reqCamPermission();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -282,15 +282,15 @@ public class CalculatorActivity extends AppCompatActivity {
     public void rootBTN(View view) {
         updateText("sqrt(");
         int cursorPos = et.getSelectionStart();
-        et.setSelection(cursorPos + 3);
+        et.setSelection(cursorPos + 4);
         tv.setText(calculation());
     }
 
     public void logBTN(View view) {
         updateText("log(");
         int cursorPos = et.getSelectionStart();
-        et.setSelection(cursorPos + 2);
-        tv.setText(calculation());
+        et.setSelection(cursorPos + 3);
+        tv.setText(et.getText());
     }
 
     public void lnBTN(View view) {
@@ -308,7 +308,7 @@ public class CalculatorActivity extends AppCompatActivity {
     public void primeBTN(View view) {
         updateText("ispr(");
         int cursorPos = et.getSelectionStart();
-        et.setSelection(cursorPos + 3);
+        et.setSelection(cursorPos + 4);
         tv.setText(calculation());
     }
 
